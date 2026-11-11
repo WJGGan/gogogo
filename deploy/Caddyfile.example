@@ -1,0 +1,5 @@
+# Replace the domain and install this file as your Caddy configuration.
+your-domain.example {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:3001
+}

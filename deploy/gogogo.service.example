@@ -1,0 +1,19 @@
+[Unit]
+Description=gogogo trial web service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gogogo
+Group=gogogo
+WorkingDirectory=/opt/gogogo
+Environment=HOST=127.0.0.1
+Environment=PORT=3001
+ExecStart=/usr/bin/node src/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>API 设置 · gogogo</title>
+  <link rel="stylesheet" href="./styles.css?v=20261110-6">
+  <script src="./settings.js?v=20261110-6" type="module"></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="./index.html">gogogo</a><nav><a href="./explore.html">输入页</a><a href="./index.html">返回首页</a></nav></header>
+  <main class="settings-page wrap">
+    <h1>API 设置</h1>
+    <p class="settings-lead">选择模型服务的使用方式。小红书检索仍使用本站的共享会话。</p>
+    <p class="settings-current" id="current-setting-status" role="status">正在读取当前配置…</p>
+    <div class="settings-options" role="radiogroup" aria-label="API 使用方式">
+      <label class="settings-option"><input type="radio" name="api-mode" value="invite"><span><strong>使用邀请码</strong><small>使用本站配置好的 DeepSeek API</small></span></label>
+      <label class="settings-option"><input type="radio" name="api-mode" value="own" checked><span><strong>配置自己的 API</strong><small>填写接口 URL、模型 ID 和 API Key</small></span></label>
+    </div>
+    <form id="settings-form" class="settings-form">
+      <label id="invite-setting" for="settings-invite"><span class="field-label">试用邀请码</span><input id="settings-invite" type="password" autocomplete="off" placeholder="输入邀请码"></label>
+      <div id="own-setting" class="own-setting-fields">
+        <label for="settings-url"><span class="field-label">接口 URL</span><input id="settings-url" type="url" inputmode="url" value="https://api.deepseek.com/chat/completions" placeholder="https://…/chat/completions" autocomplete="url"><small>完整的 HTTPS Chat Completions 地址。可用域名由站点管理员配置。</small></label>
+        <label for="settings-model"><span class="field-label">模型 ID</span><input id="settings-model" type="text" placeholder="填写服务商提供的模型 ID" autocomplete="off"></label>
+        <label for="settings-key"><span class="field-label">API Key</span><input id="settings-key" type="password" autocomplete="off" placeholder="输入你的 API Key"><small>仅保存在当前浏览器会话；请求时发送到本站服务器，不写入评测数据库。</small></label>
+      </div>
+      <p id="settings-status" role="status" hidden></p>
+      <button type="submit" class="primary">保存并开始</button>
+    </form>
+  </main>
+  <footer><span class="brand">gogogo</span></footer>
+  <script>if (location.protocol === 'file:') { document.getElementById('current-setting-status').textContent = '本地文件仅供预览。请运行 npm start，再通过 http://127.0.0.1:3001/settings.html 保存配置。'; document.querySelector('#settings-form button[type="submit"]').disabled = true; }</script>
+</body>
+</html>

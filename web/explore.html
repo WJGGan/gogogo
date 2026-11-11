@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>gogogo · 今天，出去走走。</title>
+  <link rel="stylesheet" href="./styles.css?v=20261111-3">
+  <script src="./app.js?v=20261111-9" type="module"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./index.html">gogogo</a>
+    <nav aria-label="主导航"><a href="./index.html">首页</a><a href="./settings.html">API 设置</a></nav>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <h1>今天，去哪儿走走？</h1>
+      <p class="hero-copy">选个出发地，说说你的想法，看看附近有什么灵感。</p>
+      <div class="api-state" id="api-state" role="status"><span class="api-state-dot" aria-hidden="true"></span><div><strong id="api-state-title">正在检查 API 配置</strong><p id="api-state-description">使用前需要设置邀请码或自己的 API。</p></div><a href="./settings.html">API 设置 →</a></div>
+      <form class="brief-card" id="brief-form" aria-label="出游需求">
+        <div class="brief-main">
+          <label class="location-field" for="location">
+            <span class="field-label">出发地</span>
+            <input id="location" name="location" placeholder="例如：上海静安寺附近" required autocomplete="off">
+          </label>
+          <label class="request-field" for="request">
+            <span class="field-label">你的想法 <i>选填</i></span>
+            <textarea id="request" name="request" rows="3" maxlength="160" placeholder="例如：想安静散步，顺路看看书店"></textarea>
+            <span class="field-foot"><small>时间、同行的人或想避开的事，都可以写在这里。</small><small><span id="request-count">0</span>/160</small></span>
+          </label>
+          <div class="brief-submit"><button class="primary" id="search-button" type="submit">寻找灵感</button></div>
+        </div>
+      </form>
+    </section>
+
+    <section class="analysis wrap" id="analysis" aria-label="检索与分析状态" aria-live="polite" hidden>
+      <div class="analysis-heading"><div><p class="step-label">02 / 检索与分析</p><h2 id="analysis-title">正在理解你的想法</h2></div><span class="analysis-state" id="analysis-state">分析中 · 1/3</span></div>
+      <p class="analysis-input" id="analysis-input-summary"></p>
+      <div class="analysis-line">
+        <div class="analysis-item is-active" data-analysis-step="0"><b>01</b><span><strong>生成检索关键词</strong><small>Agent 分析地点与个性化需求</small></span></div>
+        <div class="analysis-item" data-analysis-step="1"><b>02</b><span><strong>搜索小红书</strong><small>逐个关键词获取真实笔记</small></span></div>
+        <div class="analysis-item" data-analysis-step="2"><b>03</b><span><strong>整理三个方向</strong><small>筛选证据并生成有来源的玩法卡</small></span></div>
+      </div>
+      <div class="analysis-detail"><div><span id="analysis-message">正在读懂这次出门最重要的条件…</span><div class="keyword-list" id="keyword-list" hidden></div></div><div class="analysis-progress"><span id="analysis-progress-bar"></span></div></div>
+      <ol class="analysis-updates" id="analysis-updates" aria-label="最新搜索进度" aria-live="polite"></ol>
+      <div class="retrieval-summary" id="retrieval-summary" hidden>
+        <div class="retrieval-total"><strong id="retrieval-total-count">0</strong><span>条笔记命中</span><small id="retrieval-unique-count">去重后 0 条</small></div>
+        <div class="retrieval-queries" id="retrieval-queries"></div>
+      </div>
+    </section>
+
+    <section class="ideas wrap" id="ideas" hidden>
+      <div class="section-title"><div><p class="step-label">03 / 出游灵感</p><h2>找到 <span id="result-count">0</span> 个方向</h2></div><p id="result-summary">每个方向都有可打开的参考笔记。</p></div>
+      <div class="direction-legend" id="direction-legend" hidden></div>
+      <p class="note-open-hint" id="note-open-hint" hidden>点击笔记会打开小红书网页；若页面下方出现“打开 App”，可用它继续进入笔记。</p>
+      <div class="idea-grid" id="ideas-grid" aria-live="polite"></div>
+      <div class="revision-shortcut"><span>方向不太符合？可以继续说你的要求。</span><button type="button" data-revision-jump>调整这三个方向 <span aria-hidden="true">↗</span></button></div>
+    </section>
+
+    <section class="itinerary wrap" id="itinerary" hidden>
+      <div class="section-title"><div><p class="step-label">04 / 选择后细化</p><h2 id="selected-direction-title">这个方向的笔记细节</h2></div><p id="selected-direction-action"></p></div>
+      <div class="selected-detail-card">
+        <p id="selected-direction-summary"></p>
+        <div id="selected-direction-plan-wrap"><h3>根据笔记细化的轻行程</h3><p id="selected-direction-plan-status">正在读取已保存的笔记…</p><ol id="selected-direction-plan" class="detail-plan-list"></ol></div>
+        <div id="selected-direction-places-wrap" hidden><h3>笔记提到的具体地点</h3><ul id="selected-direction-places" class="detail-place-list"></ul></div>
+        <p id="selected-direction-caveat" class="card-caveat" hidden></p>
+        <div><h3>参考笔记</h3><div id="selected-direction-sources" class="selected-source-list"></div></div>
+        <div class="detail-next"><span>这条方案还需要调整？</span><button type="button" data-revision-jump>继续修改这个方案 <span aria-hidden="true">↗</span></button></div>
+      </div>
+    </section>
+    <section class="revision wrap" id="revision" hidden>
+      <div class="section-title revision-heading"><div><p class="step-label">05 / 继续调整</p><h2 id="revision-title">让方向更贴合你</h2></div><span class="revision-stage" id="revision-stage">当前：三个方向</span></div>
+      <p class="revision-intro" id="revision-intro">修改下方的完整要求，我们会先复用已经读过的笔记。</p>
+      <form id="revision-form" class="revision-form">
+        <div class="revision-fields"><label for="revision-location">地点</label><input id="revision-location" required maxlength="60" autocomplete="off" />
+        <label for="revision-request">把当前完整要求改成你现在想要的</label><textarea id="revision-request" required maxlength="500" rows="3"></textarea></div>
+        <p id="revision-hint">先用笔记池重算；证据不足时会显示待补证检索词。</p>
+        <div class="revision-actions"><button type="submit" id="revision-button" class="secondary">重新整理三个方向</button><span id="revision-version">初始版本</span></div>
+        <div class="revision-feedback" id="revision-feedback" hidden><strong id="revision-feedback-title"></strong><p id="revision-status" role="status"></p></div>
+      </form>
+    </section>
+  </main>
+
+  <footer id="about"><span class="brand">gogogo</span><p>给临时想出门的你。</p><a href="./index.html">返回首页 →</a></footer>
+</body>
+</html>

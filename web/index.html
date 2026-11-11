@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="想出门却还没想好去哪儿？从一个地点和一点想法开始。">
+  <title>gogogo · 今天出去走走</title>
+  <link rel="stylesheet" href="./styles.css?v=20261110-5">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="./index.html">gogogo</a><nav aria-label="主导航"><a href="./explore.html">开始探索</a><a href="./settings.html">API 设置</a></nav></header>
+  <main>
+    <section class="about-hero wrap">
+      <div class="about-hero-copy"><p class="about-eyebrow">GOGOGO</p><h1>让临时起意，<br>有个去处。</h1><p class="about-lead">想出门，又不想花太久查攻略。告诉我们你从哪里出发、今天想做什么，先看看几个有笔记可查的方向。</p><a class="about-cta" href="./explore.html">GO！ <span aria-hidden="true">↗</span></a></div>
+      <div class="about-hero-art" aria-hidden="true"><div class="about-sun"></div><div class="about-orbit orbit-one"></div><div class="about-orbit orbit-two"></div><span class="art-label art-label-one">出发地</span><span class="art-label art-label-two">一点想法</span><div class="art-center">go<br>go<br>go<span>↗</span></div><span class="art-caption">从一个念头，到一种可能。</span></div>
+    </section>
+
+    <section class="about-section about-intent"><div class="wrap about-section-grid"><div><p class="about-eyebrow">为什么做这个</p><h2>想出门的时候，<br>不必先做完攻略。</h2></div><div class="about-copy"><p>搜索能找到很多地方，但临时决定出门时，我们更想快点知道：今天适合去哪儿？这些建议从哪儿来？</p><p>你给一个出发地，再说说自己的想法。gogogo 会整理几个方向，附上参考笔记。看中了就继续细化；不合适，就改改要求再找。</p></div></div></section>
+
+    <section class="about-section wrap"><div class="about-heading"><p class="about-eyebrow">怎么用</p><h2>从一个念头开始</h2><p>不用把计划想完整。</p></div><div class="about-flow"><article><span>01</span><h3>说出想法</h3><p>填出发地。有时间、同行的人或偏好，也可以顺手写下。</p></article><article><span>02</span><h3>找找笔记</h3><p>用两个不同角度的关键词搜索，合并重复结果。</p></article><article><span>03</span><h3>看看方向</h3><p>从有正文可读的笔记里整理至多三个方向，并附上来源。</p></article><article><span>04</span><h3>再改一改</h3><p>选一个方向继续细化，或者换个要求重新整理。</p></article></div></section>
+
+    <section class="about-section about-agents"><div class="wrap"><div class="about-heading"><p class="about-eyebrow">AGENT PIPELINE</p><h2>一次发现，四个明确的职责。</h2><p>检索规划、证据筛选、卡片生成与方向细化分别处理，编排层负责调用顺序和阶段记录。</p></div><div class="agent-grid"><article class="agent-card"><span class="agent-symbol">↗</span><span class="agent-index">01 / 检索规划</span><h3>Planner</h3><span class="agent-role">生成查询计划</span><p>根据地点和需求生成两个不同角度的搜索词，并校验去重与约束条件。</p></article><article class="agent-card"><span class="agent-symbol">◉</span><span class="agent-index">02 / 证据研究</span><h3>Researcher</h3><span class="agent-role">筛选有效证据</span><p>基于笔记正文识别相关方向；证据不足时保留缺口，不强行补满结果。</p></article><article class="agent-card"><span class="agent-symbol">✳</span><span class="agent-index">03 / 结果编辑</span><h3>Curator</h3><span class="agent-role">生成来源卡片</span><p>把研究结果整理成至多三张方向卡，每张卡关联可打开的来源笔记。</p></article><article class="agent-card"><span class="agent-symbol">→</span><span class="agent-index">04 / 方案细化</span><h3>Direction Planner</h3><span class="agent-role">校验轻行程步骤</span><p>只使用本次已保存的笔记，核对步骤与原文依据后再呈现。</p></article></div></div></section>
+
+    <section class="about-section wrap about-diagram"><div class="about-heading"><p class="about-eyebrow">AGENT ORCHESTRATION</p><h2>编排与证据流</h2><p>一次运行会保存查询计划、检索结果、笔记证据与生成结果，便于回看和评测。</p></div><div class="diagram-surface" role="img" aria-label="用户需求进入编排层，依次经过 Planner、笔记检索、Researcher 和 Curator；选中方向后由 Direction Planner 细化。笔记证据与运行记录贯穿流程，修改要求会回到编排层。"><div class="diagram-input">地点与需求 <span>↓</span></div><div class="diagram-orchestrator"><span>DISCOVERY ORCHESTRATOR</span><strong>编排层 · 调用、校验、记录</strong></div><div class="diagram-steps"><div><b>01</b><strong>Planner</strong><small>查询计划</small></div><i>→</i><div><b>02</b><strong>检索工具</strong><small>搜索、去重、读详情</small></div><i>→</i><div><b>03</b><strong>Researcher</strong><small>证据筛选</small></div><i>→</i><div><b>04</b><strong>Curator</strong><small>来源卡片</small></div></div><div class="diagram-evidence"><span>笔记正文与来源</span><span>阶段快照与运行轨迹</span></div><div class="diagram-after"><span>选择方向 → Direction Planner 核验并细化步骤</span><span>修改需求 ↶ 复用证据并重新编排</span></div></div></section>
+
+    <section class="about-section wrap about-principle"><p class="about-eyebrow">参考信息</p><div><h2>建议要有出处。</h2><p>每个方向都会附上参考笔记。笔记没有提供的信息，我们不会替它补上。出门前，营业时间、价格和现场情况最好再确认一下。</p><a href="./explore.html">GO！ <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer><a class="brand" href="./index.html">gogogo</a><p>给临时想出门的你。</p><a href="./explore.html">GO！</a></footer>
+</body>
+</html>
