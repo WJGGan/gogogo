@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>界面 Demo · gogogo</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #173f35; background: #f7f5ef; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header, main { max-width: 1100px; margin: auto; padding: 24px; }
+    header { display: flex; justify-content: space-between; align-items: center; }
+    a { color: #173f35; }
+    .brand { font: bold 30px Georgia, serif; text-decoration: none; }
+    h1 { font-size: clamp(32px, 5vw, 54px); margin: 36px 0 8px; }
+    p { line-height: 1.7; color: #586a62; }
+    figure { margin: 36px 0 64px; }
+    figure img { width: 100%; height: auto; border: 1px solid #d9ded4; border-radius: 12px; }
+    figcaption { margin: 12px 0; color: #586a62; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header><a class="brand" href="./index.html">gogogo</a><a href="./explore.html">开始探索 ↗</a></header>
+  <main>
+    <h1>界面 Demo</h1>
+    <p>以下图片展示输入、方向卡和细化结果的界面形式。它们是设计示意，不是实时搜索结果，也不会调用小红书或模型 API。</p>
+    <figure><img src="./mock-flow-final.png" alt="输入地点和需求后展示三个出游方向的界面示意"><figcaption>01 · 输入地点和想法，查看附有来源入口的方向卡</figcaption></figure>
+    <figure><img src="./desktop-preview.png" alt="出游方向及轻行程的界面示意"><figcaption>02 · 选中方向后查看轻行程和参考笔记</figcaption></figure>
+    <p>要运行真实流程，请先按仓库 README 配置模型接口和小红书登录，再打开<a href="./explore.html">探索页面</a>。</p>
+  </main>
+</body>
+</html>
